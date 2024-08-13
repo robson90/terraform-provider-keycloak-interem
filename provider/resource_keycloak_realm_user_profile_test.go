@@ -17,6 +17,8 @@ import (
 )
 
 func TestAccKeycloakRealmUserProfile_featureDisabled(t *testing.T) {
+	skipIfVersionIsGreaterThanOrEqualTo(testCtx, t, keycloakClient, keycloak.Version_22)
+
 	realmName := acctest.RandomWithPrefix("tf-acc")
 
 	resource.Test(t, resource.TestCase{
